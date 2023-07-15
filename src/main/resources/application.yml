@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8083/eureka
+
+spring:
+  application:
+    name: TaskManager-gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: TaskManager-task-service
+          uri: lb://TaskManager-task-service
+          predicates:
+            - Path=/v1/api/task/**
+        - id: TaskManager-user-service
+          uri: lb://TaskManager-user-service
+          predicates:
+            - Path=/v1/api/user/**
