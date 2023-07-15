@@ -20,3 +20,18 @@ spring:
           uri: lb://TaskManager-user-service
           predicates:
             - Path=/v1/api/user/**
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    disable-swagger-default-url: true
+    enabled: true
+    path: /
+    urls:
+      - url: /v1/api/user/api-docs
+        name: TaskManager-user-service-docs
+        primaryName: TaskManager-user-service-docs
+      - url: /v1/api/task/api-docs
+        name: TaskManager-task-service-docs
+        primaryName: TaskManager-task-service-docs
